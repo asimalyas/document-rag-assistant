@@ -1,0 +1,5 @@
+Python is a high-level, general-purpose programming language known for its simple and readable syntax. It is widely used in web development, data analysis, artificial intelligence, machine learning, automation, and scientific computing.
+
+Python supports different programming concepts such as variables, data types, conditional statements, loops, functions, classes, and modules. Its large collection of libraries makes it useful for many different types of software projects.
+
+For example, Python can be used to read and process data, build machine learning models, create web applications, automate repetitive tasks, and develop APIs.
