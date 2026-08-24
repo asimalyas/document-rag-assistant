@@ -17,3 +17,9 @@ faiss_store/
 
 # Upload temp files
 uploads/
+
+# Chroma/SQLite databases
+src/yt_rag/data/vector_store/
+**/vector_store/
+*.sqlite3
+
