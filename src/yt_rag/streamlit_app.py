@@ -95,9 +95,14 @@ st.markdown(
 
 # ── Session State Initialization ─────────────────────────────────────────────
 def init_session_state():
+    if "session_id" not in st.session_state:
+        import uuid
+        st.session_state.session_id = uuid.uuid4().hex[:12]
     if "vectorstore" not in st.session_state:
-        st.session_state.vectorstore = VectorStore(collection_name="user_uploads")
-        st.session_state.vectorstore.reset()
+        # Unique collection per browser tab session prevents race conditions and isolates user uploads
+        st.session_state.vectorstore = VectorStore(
+            collection_name=f"user_uploads_{st.session_state.session_id}"
+        )
     if "rag_search" not in st.session_state:
         st.session_state.rag_search = RAGSearch(
             vectorstore=st.session_state.vectorstore
