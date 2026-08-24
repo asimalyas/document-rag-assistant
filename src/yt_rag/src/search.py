@@ -39,9 +39,21 @@ class RAGSearch:
                 embedding_model=embedding_model,
             )
 
-        groq_api_key = os.getenv("Groq_Api_key") or os.getenv("GROQ_API_KEY") or ""
+        # Try getting from streamlit secrets (runs in streamlit cloud)
+        groq_api_key = None
+        try:
+            import streamlit as st
+            if hasattr(st, "secrets") and st.secrets:
+                groq_api_key = st.secrets.get("GROQ_API_KEY") or st.secrets.get("Groq_Api_key")
+        except Exception:
+            pass
+
+        # Fallback to system environment variables
         if not groq_api_key:
-            print("[WARNING] No Groq API key found in environment variables!")
+            groq_api_key = os.getenv("Groq_Api_key") or os.getenv("GROQ_API_KEY") or ""
+
+        if not groq_api_key:
+            print("[WARNING] No Groq API key found in Streamlit Secrets or Environment!")
         self.llm = ChatGroq(groq_api_key=groq_api_key, model_name=llm_model)
         print(f"[INFO] Groq LLM initialized: {llm_model}")
 
