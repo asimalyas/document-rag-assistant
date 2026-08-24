@@ -1,5 +1,7 @@
 # 🤖 Document RAG Assistant
 
+**Live Deployment URL:** 🚀 [https://document-rag-assistant-7asim.streamlit.app/](https://document-rag-assistant-7asim.streamlit.app/)
+
 A high-performance, developer-friendly **Retrieval-Augmented Generation (RAG)** application. Load documents dynamically, query them with scoped context, inspect exact similarity scores, and review sources through an interactive, dashboard-style web interface.
 
 Developed with a modular Python backend (ChromaDB + SentenceTransformers + Groq LLMs) and a highly polished Streamlit frontend.
